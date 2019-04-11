@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+  web:
+    env_file:
+     - .env
+    restart: always
+    build: ./web
+    expose:
+      - "${PORT}"
+    command: /usr/local/bin/gunicorn --config gunicorn.conf -w 2 -b :8000 live:application
+    ports:
+      - "${PORT}:8000"
