@@ -1,13 +1,13 @@
-# Labels Docker
+# Identify Docker
 
-Docker container for the BRC Labels application.
+Docker container for the BRC Identify application.
 
 ## Installation and Running
 
 1. Download the code from github
 
 ```bash
-git clone https://github.com/LCBRU/labels_docker.git
+git clone https://github.com/LCBRU/identify_docker.git
 ```
 
 2. Create the development environment:
@@ -17,7 +17,7 @@ correct details.
 
 3. Run the application
 
-From the `labels_docker` directory type the command:
+From the `identify_docker` directory type the command:
 
 ```bash
 docker-compose build
