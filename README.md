@@ -1,13 +1,13 @@
-# Identify Docker
+# identity Docker
 
-Docker container for the BRC Identify application.
+Docker container for the BRC identity application.
 
 ## Installation and Running
 
 1. Download the code from github
 
 ```bash
-git clone https://github.com/LCBRU/identify_docker.git
+git clone https://github.com/LCBRU/identity_docker.git
 ```
 
 2. Create the development environment:
@@ -17,7 +17,7 @@ correct details.
 
 3. Run the application
 
-From the `identify_docker` directory type the command:
+From the `identity_docker` directory type the command:
 
 ```bash
 docker-compose build
