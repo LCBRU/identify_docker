@@ -12,7 +12,5 @@ RUN apt-get update && \
     apt-get clean
 
 RUN svn export --force https://github.com/LCBRU/identity/trunk/ /usr/src/app/
-ADD gunicorn.conf /usr/src/app/gunicorn.conf
 
-RUN pip install --no-cache-dir gunicorn
 RUN pip install --no-cache-dir -r requirements.txt

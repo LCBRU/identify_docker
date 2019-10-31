@@ -8,6 +8,16 @@ services:
     build: ./web
     expose:
       - "${PORT}"
-    command: /usr/local/bin/gunicorn --log-file=- --capture-output --config gunicorn.conf -w 2 -b :8000 live:application
     ports:
       - "${PORT}:8000"
+    command: /usr/local/bin/gunicorn --log-file=- --capture-output --config gunicorn.conf -w 2 -b :8000 live:application
+    volumes:
+      - "${DATA_DIRECTORY}:/uploads"
+  worker:
+    env_file:
+     - .env
+    restart: always
+    build: ./worker
+    command: celery -A celery_worker.celery worker
+    volumes:
+      - "${DATA_DIRECTORY}:/uploads"
