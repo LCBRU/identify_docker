@@ -26,6 +26,6 @@ services:
      - .env
     restart: always
     build: ./worker
-    command: celery -A celery_worker.celery beat
+    command: celery --pidfile= -A celery_worker.celery beat
     volumes:
       - "${DATA_DIRECTORY}:/uploads"
