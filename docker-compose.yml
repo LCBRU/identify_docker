@@ -21,3 +21,11 @@ services:
     command: celery -A celery_worker.celery worker
     volumes:
       - "${DATA_DIRECTORY}:/uploads"
+  beat:
+    env_file:
+     - .env
+    restart: always
+    build: ./worker
+    command: celery -A celery_worker.celery beat
+    volumes:
+      - "${DATA_DIRECTORY}:/uploads"
