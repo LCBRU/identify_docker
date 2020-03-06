@@ -10,7 +10,7 @@ services:
       - "${PORT}"
     ports:
       - "${PORT}:8000"
-    command: /usr/local/bin/gunicorn --log-file=- --capture-output --config gunicorn.conf -w 2 -b :8000 live:application
+    command: /usr/local/bin/gunicorn --log-file=- --capture-output --config gunicorn.conf -w 2 -b :8000 app:application
     volumes:
       - "${DATA_DIRECTORY}:/uploads"
   worker:
