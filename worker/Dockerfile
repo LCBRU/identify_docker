@@ -22,7 +22,7 @@ RUN apt-get update \
     unixodbc-dev \
 && apt-get clean
 
-RUN echo "2010-06-04 F"
+RUN echo "2010-06-04 G"
 
 RUN svn export --force https://github.com/LCBRU/identity/trunk/ /usr/src/app/
 
