@@ -22,7 +22,7 @@ RUN apt-get update \
     unixodbc-dev \
 && apt-get clean
 
-RUN echo "2010-06-29 A"
+RUN echo "2010-09-04 A"
 
 RUN svn export --force https://github.com/LCBRU/identity/trunk/ /usr/src/app/
 ADD gunicorn.conf /usr/src/app/gunicorn.conf
