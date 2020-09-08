@@ -1,4 +1,4 @@
-FROM python:3.7-stretch
+FROM python:3.8
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
@@ -22,7 +22,7 @@ RUN apt-get update \
     unixodbc-dev \
 && apt-get clean
 
-RUN echo "2010-06-29 A"
+RUN echo "2010-09-08 B"
 
 RUN svn export --force https://github.com/LCBRU/identity/trunk/ /usr/src/app/
 
