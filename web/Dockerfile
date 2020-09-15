@@ -22,7 +22,13 @@ RUN apt-get update \
     unixodbc-dev \
 && apt-get clean
 
-RUN echo "2010-09-14 D"
+RUN apt-get update -yqq \
+    && apt-get install -y --no-install-recommends openssl \ 
+    && sed -i 's,^\(MinProtocol[ ]*=\).*,\1'TLSv1.0',g' /etc/ssl/openssl.cnf \
+    && sed -i 's,^\(CipherString[ ]*=\).*,\1'DEFAULT@SECLEVEL=1',g' /etc/ssl/openssl.cnf\
+    && rm -rf /var/lib/apt/lists/*
+
+RUN echo "2010-09-15 A"
 
 RUN svn export --force https://github.com/LCBRU/identity/trunk/ /usr/src/app/
 ADD gunicorn.conf /usr/src/app/gunicorn.conf
