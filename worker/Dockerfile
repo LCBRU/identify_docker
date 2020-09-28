@@ -29,7 +29,7 @@ RUN apt-get update -yqq \
     && sed -i 's,^\(CipherString[ ]*=\).*,\1'DEFAULT@SECLEVEL=1',g' /etc/ssl/openssl.cnf\
     && rm -rf /var/lib/apt/lists/*
 
-RUN echo "2010-09-16 A"
+RUN echo "2010-09-28 A"
 
 RUN svn export --force https://github.com/LCBRU/identity/trunk/ /usr/src/app/
 
