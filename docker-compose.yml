@@ -1,11 +1,14 @@
-version: '2'
+version: '3'
 
 services:
   web:
     env_file:
      - .env
     restart: always
-    build: ./web
+    build:
+      context: ./web
+      args:
+        version: ${VERSION}
     expose:
       - "${PORT}"
     ports:
@@ -17,7 +20,10 @@ services:
     env_file:
      - .env
     restart: always
-    build: ./worker
+    build:
+      context: ./worker
+      args:
+        version: ${VERSION}
     command: celery -A celery_worker.celery worker
     volumes:
       - "${DATA_DIRECTORY}:/uploads"
@@ -25,7 +31,11 @@ services:
     env_file:
      - .env
     restart: always
-    build: ./worker
+    build:
+      context: ./worker
+      args:
+        version: ${VERSION}
     command: celery --pidfile= -A celery_worker.celery beat
     volumes:
       - "${DATA_DIRECTORY}:/uploads"
+  

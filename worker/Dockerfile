@@ -1,5 +1,7 @@
 FROM python:3.8
 
+ARG version
+
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
@@ -29,7 +31,7 @@ RUN apt-get update -yqq \
     && sed -i 's,^\(CipherString[ ]*=\).*,\1'DEFAULT@SECLEVEL=1',g' /etc/ssl/openssl.cnf\
     && rm -rf /var/lib/apt/lists/*
 
-RUN echo "2010-10-06 A"
+RUN echo "$version"
 
 RUN svn export --force https://github.com/LCBRU/identity/trunk/ /usr/src/app/
 
