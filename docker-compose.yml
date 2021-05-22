@@ -35,7 +35,7 @@ services:
       context: ./worker
       args:
         version: ${VERSION}
-    command: celery -A celery_worker.celery beat
+    command: celery -A celery_worker.celery beat --pidfile=
     volumes:
       - "${DATA_DIRECTORY}:/uploads"
   
