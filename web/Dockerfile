@@ -25,11 +25,11 @@ RUN apt-get update \
 && apt-get clean
 
 # Only needed to connect to SQL 2008
-RUN apt-get update -yqq \
-    && apt-get install -y --no-install-recommends openssl \ 
-    && sed -i 's,^\(MinProtocol[ ]*=\).*,\1'TLSv1.0',g' /etc/ssl/openssl.cnf \
-    && sed -i 's,^\(CipherString[ ]*=\).*,\1'DEFAULT@SECLEVEL=1',g' /etc/ssl/openssl.cnf\
-    && rm -rf /var/lib/apt/lists/*
+# RUN apt-get update -yqq \
+#     && apt-get install -y --no-install-recommends openssl \ 
+#     && sed -i 's,^\(MinProtocol[ ]*=\).*,\1'TLSv1.0',g' /etc/ssl/openssl.cnf \
+#     && sed -i 's,^\(CipherString[ ]*=\).*,\1'DEFAULT@SECLEVEL=1',g' /etc/ssl/openssl.cnf\
+#     && rm -rf /var/lib/apt/lists/*
 
 RUN echo "$version"
 
