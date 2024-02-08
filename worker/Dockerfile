@@ -11,6 +11,7 @@ RUN apt-get update \
     ca-certificates \
     curl \
     gnupg \
+    git \
 && curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
 && curl https://packages.microsoft.com/config/debian/11/prod.list > /etc/apt/sources.list.d/mssql-release.list \
 && apt-get update \
@@ -33,6 +34,6 @@ RUN apt-get update -yqq \
 
 RUN echo "$version"
 
-RUN svn export --force https://github.com/LCBRU/identity/trunk/ /usr/src/app/
+RUN git clone https://github.com/LCBRU/identity.git /usr/src/app/
 
 RUN pip install --no-cache-dir -r requirements.txt
