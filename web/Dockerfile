@@ -1,4 +1,4 @@
-FROM python:3.10
+FROM python:3.10-bookworm
 
 ARG version
 
@@ -12,7 +12,7 @@ RUN apt-get update \
     curl \
     gnupg \
     git \
-&& curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
+&& curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor -o /usr/share/keyrings/microsoft-prod.gpg \
 && curl https://packages.microsoft.com/config/debian/11/prod.list > /etc/apt/sources.list.d/mssql-release.list \
 && apt-get update \
 && ACCEPT_EULA=Y apt-get -y install --no-install-recommends \
