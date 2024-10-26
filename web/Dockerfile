@@ -16,7 +16,7 @@ RUN apt-get update \
 && curl https://packages.microsoft.com/config/debian/12/prod.list > /etc/apt/sources.list.d/mssql-release.list \
 && apt-get update \
 && ACCEPT_EULA=Y apt-get -y install --no-install-recommends \
-    default-mysql-client \
+    mysql-client \
     libldap2-dev \
     libsasl2-dev \
 && ACCEPT_EULA=Y apt-get -y install --no-install-recommends \
