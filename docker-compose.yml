@@ -3,37 +3,27 @@ services:
     env_file:
      - .env
     restart: always
-    build:
-      context: ./web
-      args:
-        version: ${VERSION}
+    image: lcbruit/identity_web:latest
     expose:
       - "${PORT}"
     ports:
-      - "${PORT}:8000"
-    command: /usr/local/bin/gunicorn --log-file=- --capture-output --config gunicorn.conf -w 2 -b :8000 app:application
+      - "${PORT}:8080"
     volumes:
       - "${DATA_DIRECTORY}:/uploads"
   worker:
     env_file:
      - .env
     restart: always
-    build:
-      context: ./worker
-      args:
-        version: ${VERSION}
-    command: celery -A celery_worker.celery worker
+    image: lcbruit/identity_celery:latest
+    command: worker
     volumes:
       - "${DATA_DIRECTORY}:/uploads"
   beat:
     env_file:
      - .env
     restart: always
-    build:
-      context: ./worker
-      args:
-        version: ${VERSION}
-    command: celery -A celery_worker.celery beat --pidfile=
+    image: lcbruit/identity_celery:latest
+    command: beat --pidfile=
     volumes:
       - "${DATA_DIRECTORY}:/uploads"
   
